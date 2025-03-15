@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.coffee.mapper.BuyCarMapper">
+
+    <resultMap id="BaseResultMap" type="com.coffee.pojo.BuyCar">
+            <id property="ctime" column="Ctime" jdbcType="VARCHAR"/>
+            <id property="uno" column="Uno" jdbcType="VARCHAR"/>
+            <result property="tname" column="Tname" jdbcType="VARCHAR"/>
+            <result property="csum" column="Csum" jdbcType="INTEGER"/>
+            <result property="ccup" column="Ccup" jdbcType="INTEGER"/>
+            <result property="ctemp" column="Ctemp" jdbcType="INTEGER"/>
+            <result property="csweetness" column="Csweetness" jdbcType="INTEGER"/>
+            <result property="ctno" column="Ctno" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        Ctime,Uno,Tname,
+        Csum,Ccup,Ctemp,
+        Csweetness,Ctno
+    </sql>
+</mapper>

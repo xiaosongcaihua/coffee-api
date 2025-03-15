@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.coffee.mapper.BoughtMapper">
+
+    <resultMap id="BaseResultMap" type="com.coffee.pojo.Bought">
+            <id property="bno" column="Bno" jdbcType="VARCHAR"/>
+            <result property="btime" column="Btime" jdbcType="VARCHAR"/>
+            <result property="btype" column="Btype" jdbcType="VARCHAR"/>
+            <result property="bprice" column="Bprice" jdbcType="DOUBLE"/>
+            <result property="uno" column="Uno" jdbcType="VARCHAR"/>
+            <result property="bdno" column="Bdno" jdbcType="INTEGER"/>
+            <result property="bsum" column="Bsum" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        Bno,Btime,Btype,
+        Bprice,Uno,Bdno,
+        Bsum
+    </sql>
+</mapper>
