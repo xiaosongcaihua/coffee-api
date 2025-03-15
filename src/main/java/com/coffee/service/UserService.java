@@ -1,5 +1,6 @@
 package com.coffee.service;
 
+import com.coffee.controller.form.UserLoginForm;
 import com.coffee.pojo.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -9,5 +10,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2025-03-15 15:18:30
 */
 public interface UserService extends IService<User> {
-
+    User login(UserLoginForm user);
 }
