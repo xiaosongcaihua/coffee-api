@@ -58,6 +58,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         }
     }
 
+    @Override
+    public User updatePSD(String uno , String psd) {
+        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(User::getUno , uno);
+        User user = new User();
+        user.setUno(uno);
+        user.setUpassword(psd);
+        int update = userMapper.update(user, wrapper);
+        if (update == 1) {
+            return userMapper.selectOne(new LambdaQueryWrapper<User>().eq(User::getUno , uno));
+        }
+        return null;
+    }
+
 }
 
 

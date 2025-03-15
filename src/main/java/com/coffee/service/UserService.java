@@ -13,5 +13,5 @@ public interface UserService extends IService<User> {
     User login(UserLoginForm user);
     User selectUserById(String uno);
     User register(User user);
-
+    User updatePSD(String uno , String psd);
 }

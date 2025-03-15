@@ -48,4 +48,15 @@ public class UseController {
             return R.error("注册失败");
         }
     }
+    @PostMapping("psd")
+    public R updatePSD(@RequestBody Map<String, Object> requestData){
+        String upassword = (String) requestData.get("Upassword");
+        String uno = (String) requestData.get("Uno");
+        User user = userService.updatePSD(uno, upassword);
+        if (user == null) {
+            return R.error("更新密码失败");
+        } else {
+            return R.ok(user);
+        }
+    }
 }
