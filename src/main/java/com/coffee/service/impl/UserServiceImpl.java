@@ -1,5 +1,7 @@
 package com.coffee.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.coffee.controller.form.UserLoginForm;
 import com.coffee.pojo.User;
@@ -27,13 +29,35 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      */
     @Override
     public User login(UserLoginForm user) {
-        User userById = userMapper.selectById(user.getUno());
+        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(User::getUno , user.getUno());
+        User userById = userMapper.selectOne(wrapper);
         //TODO 新增对密码的解密
-        if(userById == null || userById.getUpassword().equals(user.getUpassword())) {
+        if(userById == null || !userById.getUpassword().equals(user.getUpassword())) {
             return null;
         }
         return userById;
     }
+
+    @Override
+    public User selectUserById(String uno) {
+        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(User::getUno , uno);
+        return userMapper.selectOne(wrapper);
+    }
+
+    @Override
+    public User register(User user) {
+        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(User::getUno , user.getUno());
+        int insert = userMapper.insert(user);
+        if(insert == 1) {
+            return userMapper.selectOne(wrapper);
+        } else {
+            return null;
+        }
+    }
+
 }
 
 

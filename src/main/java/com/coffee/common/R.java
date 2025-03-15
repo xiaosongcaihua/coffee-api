@@ -21,7 +21,7 @@ public class R extends HashMap<String,Object> {
     }
     public static R ok(Object msg) {
         R r = new R();
-        r.put("msg" , msg);
+        r.put("data" , msg);
         return r;
     }
 
