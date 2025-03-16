@@ -9,5 +9,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2025-03-15 15:18:30
 */
 public interface BuyCarService extends IService<BuyCar> {
-
+    BuyCar insert(BuyCar car);
 }

@@ -1,9 +1,12 @@
 package com.coffee.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.coffee.common.R;
 import com.coffee.pojo.BuyCar;
 import com.coffee.service.BuyCarService;
 import com.coffee.mapper.BuyCarMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +18,18 @@ import org.springframework.stereotype.Service;
 public class BuyCarServiceImpl extends ServiceImpl<BuyCarMapper, BuyCar>
     implements BuyCarService{
 
+    @Autowired
+    private BuyCarMapper buyCarMapper;
+
+    public BuyCar insert(BuyCar car){
+        int insert = buyCarMapper.insert(car);
+        if (insert != 0) {
+            return buyCarMapper.selectOne(new LambdaQueryWrapper<BuyCar>().eq(BuyCar::getCtime
+                    , car.getCtime()).eq(BuyCar::getUno , car.getUno()));
+        } else {
+            return null;
+        }
+    }
 }
 
 
